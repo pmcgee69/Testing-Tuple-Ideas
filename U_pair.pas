@@ -60,15 +60,15 @@ end;
 function ß<T>.ToString : string;
 begin
    case GetTypeKind(T) of
-     tkInteger   : result := '(' + TValue.From<T>(Key).ToString + '  '
-                                 + TValue.From<T>(Value).ToString +')';
+     tkInteger   : result := '(' + TValue.From<T>(Key)  .ToString + ',  '
+                                 + TValue.From<T>(Value).ToString + ')';
      tkChar,
      tkWChar,
      tkString,
      tkUString,
      tkLString,
-     tkWString   : result := '("' + TValue.From<T>(Key).ToString + '"  "'
-                                  + TValue.From<T>(Value).ToString +'")';
+     tkWString   : result := '("' + TValue.From<T>(Key)  .ToString + '",  "'
+                                  + TValue.From<T>(Value).ToString + '")';
    else
                    result := 'x ' + TValue.From<TTypeKind>( GetTypeKind(T) ).ToString;
    end;
