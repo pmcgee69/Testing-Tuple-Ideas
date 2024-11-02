@@ -10,7 +10,7 @@ begin
                  þ('four', 'Athens'), þ('five','Madrid'),  þ('six', 'Bruxelles'),
                  þ('seven', 'Paris')
                ];
-    //var ODict1 := TOrderedDictionary <string, string>.Create(q);
+    var ODict1 := TOrderedDictionary <string, string>.Create(q);   //  <-- Error
 
     var ODict2 := TOrderedDictionary <string, string>.Create([ þ('one', 'London'), þ('two', 'Berlin'),
                                                                þ('three', 'Rome'), þ('four', 'Athens'),
@@ -31,8 +31,8 @@ begin
     var xy₁ := þ(1,2);
     var xy₂ := þ('1','2');
 
-    writeln(xy₁.ToString); // .Key, '  ', xy₁.Value);
-    writeln(xy₂.ToString); // .Key, '  ', xy₂.Value);
+    writeln(xy₁.ToString); 
+    writeln(xy₂.ToString); 
     readln;
   end.
 
