@@ -1,76 +1,76 @@
 unit U_pair;
 
 interface
-uses   System.Generics.Collections;             // ßþÞ
+uses   System.Generics.Collections;             // ÃŸÃ¾Ãž
 
 type
-  ß<T> = record
+  ÃŸ<T> = record
     Key, Value: T;
     constructor    Create(const K,V: T);
     function       ToString : string;
-    class operator implicit (p:TPair<T,T>) : ß<T>;
-    class operator implicit (p:ß<T>)       : TPair<T,T>;
+    class operator implicit (p:TPair<T,T>) : ÃŸ<T>;
+    class operator implicit (p:ÃŸ<T>)       : TPair<T,T>;
   end;
 
-  þ_int = ß<integer>; //TPair<integer,integer>;
-  þ_str = ß<string>;  //TPair<string,string>;
+  Ã¾_int = ÃŸ<integer>; //TPair<integer,integer>;
+  Ã¾_str = ÃŸ<string>;  //TPair<string,string>;
 
   tp = record
-       class function þ<T>(a,b:T) : ß<T>; static;
+       class function Ã¾<T>(a,b:T) : ÃŸ<T>; static;
   end;
 
-function  þ(a,b:integer) : þ_int; {TPair<integer,integer>;} overload;
-function  þ(a,b:string)  : þ_str; {TPair<string,string>;}   overload;
+function  Ã¾(a,b:integer) : Ã¾_int; {TPair<integer,integer>;} overload;
+function  Ã¾(a,b:string)  : Ã¾_str; {TPair<string,string>;}   overload;
 
 
 implementation
 uses System.Rtti, System.SysUtils;
 
-class function tp.þ<T>(a,b:T) : ß<T>;
+class function tp.Ã¾<T>(a,b:T) : ÃŸ<T>;
 begin
-      result := ß<T>.Create(a,b);
+      result := ÃŸ<T>.Create(a,b);
 end;
 
-function  þ(a,b:integer) : þ_int; {TPair<integer,integer>;} overload;
+function  Ã¾(a,b:integer) : Ã¾_int; {TPair<integer,integer>;} overload;
 begin
-    result := tp.þ(a,b);
+    result := tp.Ã¾(a,b);
 end;
 
-function  þ(a,b:string) : þ_str; {TPair<string,string>;} overload;
+function  Ã¾(a,b:string) : Ã¾_str; {TPair<string,string>;} overload;
 begin
-    result := tp.þ(a,b);
+    result := tp.Ã¾(a,b);
 end;
 
 
-constructor ß<T>.Create(const K,V: T);
+constructor ÃŸ<T>.Create(const K,V: T);
 begin
    Key := K; Value := V;
 end;
 
-class operator ß<T>.implicit (p:TPair<T,T>) : ß<T>;
+class operator ÃŸ<T>.implicit (p:TPair<T,T>) : ÃŸ<T>;
 begin
    result.Create(p.Key,p.Value);
 end;
 
-class operator ß<T>.implicit (p:ß<T>) : TPair<T,T>;
+class operator ÃŸ<T>.implicit (p:ÃŸ<T>) : TPair<T,T>;
 begin
    result.Create(p.Key,p.Value);
 end;
 
-function ß<T>.ToString : string;
+function ÃŸ<T>.ToString : string;
 begin
    case GetTypeKind(T) of
      tkInteger   : result := '(' + TValue.From<T>(Key).ToString + '  '
                                  + TValue.From<T>(Value).ToString +')';
+     tkChar,
+     tkWChar,
      tkString,
      tkUString,
      tkLString,
      tkWString   : result := '("' + TValue.From<T>(Key).ToString + '"  "'
                                   + TValue.From<T>(Value).ToString +'")';
-     tkChar,
-     tkWChar     : result := 'char';
    else
-                   result := 'x '; //+TValue.From<TTypeKind>(x).ToString;
+                   result := 'x ' + TValue.From<TTypeKind>( GetTypeKind(T) ).ToString;
    end;
 end;
 
