@@ -13,11 +13,11 @@ begin
                                                                þ('seven','Paris')
                                                              ]);
 
-    var xy₁ := tp.þ(1,2);     //ß<integer>.þ(1,2);       //   tp.þ(1,2);
-    var xy₂ := tp.þ('1','2'); //ß<string >.þ('1','2');   //   tp.þ('1','2');
+    var xy₁ := þ(1,2);     //   tp.þ(1,2);
+    var xy₂ := þ('1','2'); //   tp.þ('1','2');
 
-    writeln(xy₁.ToString); //₁.Key, '  ', xy₁.Value);
-    writeln(xy₂.ToString); // .Key, '  ', xy₂.Value);
+    writeln(xy₁.ToString); 
+    writeln(xy₂.ToString); 
 
     readln;
   end.
