@@ -3,7 +3,7 @@ program Project2;
 uses
   system.SysUtils,
   System.Generics.Collections,
-  U_pair in '..\..\U_pair.pas';             //   † ‡ ° ' ‘ ’ … ₂ ₁
+  U_pair in 'U_pair.pas';             //   † ‡ ° ' ‘ ’ … ₂ ₁
 
 
 begin
